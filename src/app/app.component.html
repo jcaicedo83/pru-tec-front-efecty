@@ -1,0 +1,66 @@
+<div class="content">
+  <h1>prueba tecnica</h1>
+
+      <table>
+        <tr>
+          <td>
+            Tipo Documento:
+          </td>
+          <td>
+            <mat-form-field appearance="fill">
+              <mat-label>TIPO</mat-label>
+              <mat-select [formControl]="fcTipoDoc">
+                <mat-option value="1">Registro Civil</mat-option>
+                <mat-option value="2">Tarjeta Identidad</mat-option>
+                <mat-option value="3">Cedula Ciudadania</mat-option>
+                <mat-option value="4">Cedula Extranjeria</mat-option>
+                <mat-option value="5">Pasaporte</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>Nro documento:</td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>nro documento</mat-label>
+              <input matInput [formControl]="fcNroDoc" placeholder="1111111111">
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>Fecha Nacimiento</td>
+          <td>
+            <mat-form-field appearance="fill">
+              <input [formControl]="fcFechaNac" matInput [matDatepicker]="picker">
+              <mat-hint>MM/DD/YYYY</mat-hint>
+              <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>Estado Civil</td>
+          <td>
+            <mat-form-field appearance="fill">
+              <mat-label>Estado Civil</mat-label>
+              <mat-select [formControl]="fcEstadoCiv">
+                <mat-option *ngFor="let estado of estados" [value]="estado.IdEstadoCivil">{{estado.DescEstadoCivil}}</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </td>
+        </tr>
+        <br>
+        <tr>
+          <td>Valor:</td>
+          <td>
+            <mat-form-field class="example-full-width">
+              <mat-label>valor</mat-label>
+              <input matInput [formControl]="fcValor" type="number" placeholder="0">
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+      <button mat-button class="bg-success" (click)="guardar()">Registrar <mat-icon>save</mat-icon></button>
+      <button mat-button class="bg-warning" (click)="consultar()">Consultar <mat-icon>search</mat-icon></button>
+</div>
